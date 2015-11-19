@@ -1,6 +1,6 @@
 NAME=gh-release
 ARCH=$(shell uname -m)
-VERSION=2.2.1
+VERSION=2.2.2
 
 build:
 	go-bindata bash
@@ -18,6 +18,6 @@ release: build
 	rm -rf release && mkdir release
 	tar -zcf release/$(NAME)_$(VERSION)_linux_$(ARCH).tgz -C build/Linux $(NAME)
 	tar -zcf release/$(NAME)_$(VERSION)_darwin_$(ARCH).tgz -C build/Darwin $(NAME)
-	build/$(shell uname)/gh-release create progrium/$(NAME) $(VERSION) $(shell git rev-parse --abbrev-ref HEAD)
+	build/$(shell uname)/gh-release create marvinosswald/$(NAME) $(VERSION) $(shell git rev-parse --abbrev-ref HEAD)
 
 .PHONY: release build

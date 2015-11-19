@@ -12,7 +12,7 @@ release-create() {
 	for asset in $(ls -A release); do
 		local name="$(basename $asset)"
 		echo "Uploading $name ..."
-		curl -X POST -H "Content-Type: $(mimetype $name)" --data-binary "@release/$asset" \
+		curl -X POST -H "Content-Type: $(mimetype $name) name: $name" --data-binary "@release/$asset" \
 			"$upload_url=$name&access_token=$GITHUB_ACCESS_TOKEN" > /dev/null
 	done
 }
